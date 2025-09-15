@@ -29,6 +29,7 @@ import lombok.Setter;
 @Table(name = "_user")
 public class User {
     @Id
+    @EqualsAndHashCode.Include
     private UUID id = UUID.randomUUID();
 
     @NotNull
