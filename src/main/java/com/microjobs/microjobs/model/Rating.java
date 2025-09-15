@@ -27,7 +27,7 @@ import lombok.Setter;
 public class Rating {
     @Id
     @EqualsAndHashCode.Include
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
