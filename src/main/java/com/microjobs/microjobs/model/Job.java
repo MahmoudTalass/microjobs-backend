@@ -83,6 +83,6 @@ public class Job {
     private Set<Tag> tags;
 
     @NotNull
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
     private Set<Image> images;
 }
