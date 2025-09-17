@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import com.microjobs.microjobs.helpers.Enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +20,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 @Getter
@@ -57,4 +61,8 @@ public class User {
 
     @NotNull
     private Instant joinedAt;
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<UserRole> roles = new HashSet<>();
 }
