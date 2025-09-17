@@ -1,6 +1,7 @@
 package com.microjobs.microjobs.model;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import com.microjobs.microjobs.helpers.Enums.CompensationType;
@@ -76,13 +77,13 @@ public class Job {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     @Size(min = 1, max = 3)
-    private Set<CompensationType> compensationType;
+    private Set<CompensationType> compensationType = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(joinColumns = @JoinColumn(name = "job_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
-    private Set<Tag> tags;
+    private Set<Tag> tags = new HashSet<>();
 
     @NotNull
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
-    private Set<Image> images;
+    private Set<Image> images = new HashSet<>();
 }
